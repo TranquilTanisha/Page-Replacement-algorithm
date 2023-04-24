@@ -1,14 +1,10 @@
 #replaces the least recently used page, from the left 
 
-str=input("Enter the pages separated by comas: ")
-pages=str.split(",")
+print("LRU page replacement algorithm")
 n=int(input("Enter the number of frames: "))
+pages=[int(x) for x in input("Enter the pages separated by spaces: ").split()]
 print("The pages are: ")
 print(pages)
-print("FIFO page replacement algorithm")
-
-for i in range(len(pages)):
-    pages[i]=int(pages[i])
 
 frame=[-1]*n
 fault=0
@@ -19,16 +15,18 @@ for i in range(len(pages)):
     if pages[i] in frame:
         hit+=1
         flag=True
+
     else:
         if i>=n:
             temp=pages[0:i]
             temp.reverse()
             c=[]
-            for j in range(len(frame)):
-                if frame[j] in temp:
-                    c.append(len(temp)-temp.index(frame[j])-1)
-                else:
-                    c.append(100)
+            for j in range(n):
+                # if frame[j] in temp:
+                #     c.append(len(temp)-temp.index(frame[j])-1)
+                # else:
+                #     c.append(100)
+                c.append(len(temp)-temp.index(frame[j])-1)
             frame[c.index(min(c))]=pages[i]
         else:
             frame[i]=pages[i]

@@ -1,14 +1,9 @@
 #Replaces pages with fifo rule, if the page is already in the frame, pointer doesn't move
-
-str=input("Enter the pages separated by comas: ")
-pages=str.split(",")
+print("FIFO page replacement algorithm")
 n=int(input("Enter the number of frames: "))
+pages=[int(x) for x in input("Enter the pages separated by spaces: ").split()]
 print("The pages are: ")
 print(pages)
-print("FIFO page replacement algorithm")
-
-for i in range(len(pages)):
-    pages[i]=int(pages[i])
 
 frames=[-1]*n
 fault=0
@@ -22,6 +17,7 @@ for i in range(len(pages)):
     else:
         frames[i%n]=pages[i]
         fault+=1
+        
     print(frames)
     if flag==True:
         print("Page Hit")

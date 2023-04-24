@@ -1,14 +1,10 @@
 #replaces the page that is used the farthest in the future, towards the right
 
-str=input("Enter the pages separated by comas: ")
-pages=str.split(",")
+print("Optimal page replacement algorithm")
 n=int(input("Enter the number of frames: "))
+pages=[int(x) for x in input("Enter the pages separated by spaces: ").split()]
 print("The pages are: ")
 print(pages)
-print("Optimal page replacement algorithm")
-
-for i in range(len(pages)):
-    pages[i]=int(pages[i])
 
 frame=[-1]*n
 fault=0
@@ -23,7 +19,7 @@ for i in range(len(pages)):
         if i>=n:
             temp=pages[i+1:]
             c=[]
-            for j in range(len(frame)):
+            for j in range(n):
                 if frame[j] in temp:
                     c.append(temp.index(frame[j]))
                 else:
